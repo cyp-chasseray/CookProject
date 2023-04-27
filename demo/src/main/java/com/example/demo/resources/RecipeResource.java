@@ -1,11 +1,9 @@
 package com.example.demo.resources;
-
 import com.example.demo.model.Recipe;
 import com.example.demo.service.RecipeService;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-
 import java.util.List;
 
 @Path("/recipe")

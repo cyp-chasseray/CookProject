@@ -74,6 +74,28 @@ public class RecipeDAO implements GenericDAO<Recipe> {
         return recipe;
     }
 
+    public List<Recipe> fetchByKeyWord(String keyword) {
+        List<Recipe> listRecipe = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT id, title, content, pictureUrl, category FROM recipes WHERE category LIKE ? OR content LIKE ?;");
+            statement.setString(1, "%" + keyword + "%");
+            statement.setString(2, "%" + keyword + "%");
+            ResultSet results = statement.executeQuery();
+            while (results.next()) {
+                listRecipe.add(new Recipe(
+                        results.getInt("id"),
+                        results.getString("title"),
+                        results.getString("content"),
+                        results.getString("pictureUrl"),
+                        results.getString("category")));
+            }
+            return listRecipe;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     @Override
     public void update(int id, Recipe recipe) {
         try (PreparedStatement statement = connection.prepareStatement("UPDATE recipes SET id = ?, title = ?, content = ?, pictureUrl = ?, category = ? WHERE id = ?;")) {

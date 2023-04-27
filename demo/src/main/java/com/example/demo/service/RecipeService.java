@@ -15,6 +15,10 @@ public class RecipeService {
         return recipeDAO.fetchOne(id);
     }
 
+    public List<Recipe> fetchPostByKeyWord(String keyword) {
+        return recipeDAO.fetchByKeyWord(keyword);
+    }
+
     public Recipe createRecipe(Recipe recipe) {
 
         return recipeDAO.create(recipe);
