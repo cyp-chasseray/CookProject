@@ -1,5 +1,9 @@
 package com.example.demo.model;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 public class Recipe {
     private int id;
     private String title;
@@ -20,6 +24,12 @@ public class Recipe {
         this.content = content;
         this.pictureUrl = pictureUrl;
         this.category = category;
+    }
+
+    public static List<Recipe> randomRecipe(List<Recipe> recipeList) {
+        Random rand = new Random();
+        Recipe randomRecipe = recipeList.get(rand.nextInt(recipeList.size()));
+        return Collections.singletonList(randomRecipe);
     }
 
     public int getId() {

@@ -77,9 +77,10 @@ public class RecipeDAO implements GenericDAO<Recipe> {
     public List<Recipe> fetchByKeyWord(String keyword) {
         List<Recipe> listRecipe = new ArrayList<>();
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT id, title, content, pictureUrl, category FROM recipes WHERE category LIKE ? OR content LIKE ?;");
+            PreparedStatement statement = connection.prepareStatement("SELECT id, title, content, pictureUrl, category FROM recipes WHERE title LIKE ? OR category LIKE ? OR content LIKE ?;");
             statement.setString(1, "%" + keyword + "%");
             statement.setString(2, "%" + keyword + "%");
+            statement.setString(3, "%" + keyword + "%");
             ResultSet results = statement.executeQuery();
             while (results.next()) {
                 listRecipe.add(new Recipe(

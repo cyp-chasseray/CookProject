@@ -9,20 +9,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+
 @WebServlet(urlPatterns = {"/", "/recipes"})
 public class RecipesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RecipeService recipeService = new RecipeService();
-        String keyword = req.getParameter("searchName");
-        List<Recipe> recipeList;
-        if (keyword != null) {
-            recipeList = recipeService.fetchPostByKeyWord(keyword);
-        } else {
-            recipeList = recipeService.fetchAllRecipes();
-        }
+        List<Recipe> recipeList= recipeService.fetchAllRecipes();
         req.setAttribute("recipes", recipeList);
         req.getRequestDispatcher("/WEB-INF/recipe-list.jsp").forward(req, resp);
     }

@@ -17,6 +17,18 @@ public class RecipeResource {
     }
 
     @GET
+    @Path("/search")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Recipe> searchRecipeByKeyword(@QueryParam("keyword") String keyword) {
+        if (keyword.equals("Breakfast") || keyword.equals("Diner") || keyword.equals("Lunch") ||
+        keyword.equals("breakfast") || keyword.equals("diner") || keyword.equals("lunch")) {
+            return Recipe.randomRecipe(recipeService.fetchRecipeByKeyWord(keyword));
+        }
+        return recipeService.fetchRecipeByKeyWord(keyword);
+    }
+
+
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Recipe> getAllRecipes() {
         return recipeService.fetchAllRecipes();

@@ -24,15 +24,25 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="recipes">Home</a>
+                        <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/secured">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="login">Login</a>
+                        <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/secured/add-recipe">Add recipe</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="register">Register</a>
+                        <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/secured/logout">Logout</a>
                     </li>
                 </ul>
+                <form class="end-navbar d-flex" role="search" action="${pageContext.request.contextPath}/secured/recipes" method="get">
+                    <input name="mealChoice" class="form-control me-2" type="search" placeholder="Breakfast, lunch, diner?"
+                           aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Suggestion</button>
+                </form>
+                <form class="last-search-box end-navbar d-flex" role="search" action="${pageContext.request.contextPath}/secured/recipes" method="get">
+                    <input name="keyword" class="form-control me-2" type="search" placeholder="Any specific idea?"
+                           aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
             </div>
         </div>
     </nav>
@@ -47,7 +57,7 @@
                     <img src="${r.pictureUrl}" class="card-img-top" alt="${r.title}">
                     <div class="card-body">
                         <h5 class="card-title">${r.title}</h5>
-                        <p class="card-text">Recipe : ${r.content}</p>
+                        <p class="card-text">Recipe: ${r.content}</p>
                     </div>
                 </div>
             </div>

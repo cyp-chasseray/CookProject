@@ -1,9 +1,14 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Aerosson
+  Date: 19/04/2023
+  Time: 12:19
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>This is a title</title>
+    <title>Registration confirmed</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style>
@@ -11,7 +16,6 @@
     </style>
 </head>
 <body>
-
 <header class="mb-4">
     <nav class="navbar navbar-expand-md navbar-dark">
         <div class="container-fluid">
@@ -37,24 +41,9 @@
         </div>
     </nav>
 </header>
-
-<div class="container">
-    <h1>Recipes</h1>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 align-content-center">
-        <c:forEach var="r" items="${recipes}">
-            <div class="col">
-                <div class="card">
-                    <img src="${r.pictureUrl}" class="card-img-top" alt="${r.title}">
-                    <div class="card-body">
-                        <h5 class="card-title">${r.title}</h5>
-                        <p class="card-text">Recipe : ${r.content}</p>
-                    </div>
-                </div>
-            </div>
-        </c:forEach>
-    </div>
+<div class="login-box">
+<h1>Inscription réussie</h1>
+<button class = "btn btn-success" onclick="location.href='/demo_war_exploded/login';">Retour à la page de connexion</button>
 </div>
-
-
 </body>
 </html>

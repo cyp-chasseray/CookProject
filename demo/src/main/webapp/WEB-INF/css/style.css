@@ -1,0 +1,21 @@
+.navbar {
+    background-color: #De8586;
+    padding-left: 115px;
+    padding-right: 115px;
+}
+
+.end-navbar {
+    margin-bottom: 0;
+}
+
+.last-search-box {
+    margin-left: 20px;
+}
+
+.login-box {
+    padding-left: 130px;
+}
+
+.btn-success {
+    background-color: #De8586;
+}
